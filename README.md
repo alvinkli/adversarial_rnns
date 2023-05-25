@@ -1,1 +1,1 @@
-# adversarial_rnns
+# Adversarial RNNs
