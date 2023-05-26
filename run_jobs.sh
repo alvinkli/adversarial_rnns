@@ -9,21 +9,21 @@ for model in LSTM LTC
 do
 
   # Loop through training mode
-  for train_data in adversarial nonadversarial
+  for train_mode in adversarial nonadversarial
   do
 
     # Loop through testing mode
-    for test_data in adversarial nonadversarial
+    for test_mode in adversarial nonadversarial
     do
 
       # Loop through sampling mode
       for sampling in regular irregular
       do
 
-       echo $model $train_data $test_data $sampling
-       savedir="logs/${model}_${train_data}_${test_data}_${sampling}"
+       echo $model $train_mode $test_mode $sampling
+       savedir="logs/${model}_${train_mode}_${test_mode}_${sampling}"
        mkdir -p $savedir
-       CUDA_VISIBLE_DEVICES=$GPU python train.py --model_type $model --train $train_data --test $test_data --sample $sampling > ${savedir}/log 2>&1 &
+       CUDA_VISIBLE_DEVICES=$GPU python train.py --model_type $model --train $train_mode --test $test_mode --sample $sampling > ${savedir}/log 2>&1 &
 
        # Increment GPU so we parallelize experiments on different gpus
        GPU=$((GPU + 1))

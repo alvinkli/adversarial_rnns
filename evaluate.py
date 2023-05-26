@@ -51,7 +51,6 @@ for i in tqdm(range(0, loader.test_x.shape[0], args.batch_size)):
     loader.test_y[i:i+args.batch_size],
     loader.test_t[i:i+args.batch_size])]
 
-
   ### TODO: if test == "adversarial" then we should do an adversarial step here.
   if regular:
     if test_mode == "adversarial":
@@ -69,7 +68,6 @@ all_preds = np.concatenate(all_preds, axis=0)
 
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 total_loss = loss_fn(loader.test_y, all_preds)
-
 total_accuracy = np.mean(loader.test_y == np.argmax(all_preds, -1))
 
 print(f"total_loss: {total_loss} \t total_accuracy: {total_accuracy}")
