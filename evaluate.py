@@ -13,7 +13,6 @@ gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
   tf.config.experimental.set_memory_growth(gpu, True)
 
-
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--path', type=str, help="Path to the saved model.ckpt")
 
@@ -22,12 +21,10 @@ parser.add_argument('--num_nodes', type=int, default=128)
 parser.add_argument('--batch_size', type=int, default=32)
 args = parser.parse_args()
 
-
 dirname = os.path.dirname(args.path)
 descriptor = os.path.basename(dirname)
 model_type, train_mode, test_mode, sample = descriptor.split("_")
 regular = (sample == "regular")
-
 
 loader = data.PersonData(args.seq_len, regular)
 model = models.build_model(

@@ -3,7 +3,6 @@ import os
 import tensorflow as tf
 from tqdm import tqdm
 
-
 class PersonData:
   class_map = {
     "lying down": 0,

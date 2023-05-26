@@ -32,8 +32,6 @@ def build_model(model_type, training_mode, testing_mode, batch_size, seq_length,
         model = tf.keras.Model(inputs=(input_x, input_t), outputs=y)
   return AdaptableRNNModel(model, model_type, training_mode, testing_mode, adv_eps)
 
-
-
 class AdaptableRNNModel(tf.keras.Model):
   def __init__(self, model, model_type, training_mode, testing_mode, adversarial_eps=0.1):
     super(AdaptableRNNModel, self).__init__()
@@ -113,7 +111,6 @@ class AdaptableRNNModel(tf.keras.Model):
 
       loss = self.compute_loss(y, y_hat)
     return loss
-
 
 class IFGSM:
   def __init__(self, epsilon, iterations=1):

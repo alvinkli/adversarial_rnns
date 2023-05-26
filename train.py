@@ -13,7 +13,6 @@ gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
   tf.config.experimental.set_memory_growth(gpu, True)
 
-
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--seq_len', type=int, default=32)
 parser.add_argument('--batch_size', type=int, default=32)
@@ -26,7 +25,6 @@ parser.add_argument('--test', type=str, default="nonadversarial")
 parser.add_argument('--sample', type=str, default="regular")
 parser.add_argument('--logdir', type=str, default='./logs')
 args = parser.parse_args()
-
 
 # Setup dataloader and model
 regular = args.sample == "regular"
@@ -43,7 +41,6 @@ model = models.build_model(
 )
 optimizer = tf.keras.optimizers.Adam(args.lr)
 
-
 # Prepare for training, create the log directory and initialize loss histories
 pbar = tqdm(range(args.num_iters))
 train_losses = []
@@ -51,7 +48,6 @@ test_losses = []
 dirname = f"{args.model_type}_{args.train}_{args.test}_{args.sample}"
 Path(os.path.join(args.logdir, dirname)).mkdir(parents=True, exist_ok=True)
 print(f"Saving to: {os.path.join(args.logdir, dirname)}")
-
 
 # Loop through and train
 for iter in pbar:
@@ -79,7 +75,6 @@ for iter in pbar:
     model.save_weights(os.path.join(args.logdir, dirname, "model.ckpt"))
 
 model.save_weights(os.path.join(args.logdir, dirname, "model.ckpt"))
-
 
 # Make some preliminary (loss) plots, save them in the same directory as the model
 plt.plot(np.linspace(0, args.num_iters, len(train_losses)), train_losses)
