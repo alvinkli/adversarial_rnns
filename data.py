@@ -148,9 +148,9 @@ class PersonData:
                     new_elapsed_time = t[i]
                 t_.append(new_elapsed_time)
 
-            t_ = np.array(t_)[drop_mask]
-            x_ = x[drop_mask]
-            y_ = y[drop_mask]
+            t_ = np.array(t_)[~drop_mask]
+            x_ = x[~drop_mask]
+            y_ = y[~drop_mask]
 
             for s in range(0, x_.shape[0] - seq_len, inc):
                 start = s
