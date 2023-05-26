@@ -30,8 +30,6 @@ def build_model(model_type, training_mode, testing_mode, batch_size, seq_length,
         x = ltc_layer((input_x, input_t))
         y = tf.keras.layers.Dense(num_outputs)(x)
         model = tf.keras.Model(inputs=(input_x, input_t), outputs=y)
-
-
   return AdaptableRNNModel(model, model_type, training_mode, testing_mode, adv_eps)
 
 

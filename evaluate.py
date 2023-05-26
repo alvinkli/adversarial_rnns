@@ -31,14 +31,14 @@ regular = (sample == "regular")
 
 loader = data.PersonData(args.seq_len, regular)
 model = models.build_model(
-    model_type=model_type,
-    num_nodes=args.num_nodes,
-    training_mode=train_mode,
-    testing_mode=test_mode,
-    batch_size=args.batch_size,
-    seq_length=args.seq_len,
-    num_x_features=loader.train_x.shape[2],
-    regular=regular,
+  model_type=model_type,
+  num_nodes=args.num_nodes,
+  training_mode=train_mode,
+  testing_mode=test_mode,
+  batch_size=args.batch_size,
+  seq_length=args.seq_len,
+  num_x_features=loader.train_x.shape[2],
+  regular=regular,
 )
 
 # Load the trained weights
@@ -46,24 +46,24 @@ model.load_weights(args.path)
 
 all_preds = []
 for i in tqdm(range(0, loader.test_x.shape[0], args.batch_size)):
-    x, y, t = [tf.convert_to_tensor(arr) for arr in (
-        loader.test_x[i:i+args.batch_size],
-        loader.test_y[i:i+args.batch_size],
-        loader.test_t[i:i+args.batch_size])]
+  x, y, t = [tf.convert_to_tensor(arr) for arr in (
+    loader.test_x[i:i+args.batch_size],
+    loader.test_y[i:i+args.batch_size],
+    loader.test_t[i:i+args.batch_size])]
 
 
-    ### TODO: if test == "adversarial" then we should do an adversarial step here.
-    if regular:
-        if test_mode == "adversarial":
-            pred = model.adv_call(x)
-        else:
-            pred = model(x)
+  ### TODO: if test == "adversarial" then we should do an adversarial step here.
+  if regular:
+    if test_mode == "adversarial":
+      pred = model.adv_call(x)
     else:
-        if test_mode == "adversarial":
-            pred = model.adv_call((x, t))
-        else:
-            pred = model((x, t))
-    all_preds.append(pred)
+      pred = model(x)
+  else:
+    if test_mode == "adversarial":
+      pred = model.adv_call((x, t))
+    else:
+      pred = model((x, t))
+  all_preds.append(pred)
 
 all_preds = np.concatenate(all_preds, axis=0)
 
