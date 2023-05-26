@@ -121,7 +121,25 @@ class PersonData:
         series_t.append(elasped)
         series_y.append(label_col)
 
-    return all_x, all_t, all_y
+    #Remove Zeros
+    clean_all_x = []
+    clean_all_t = []
+    clean_all_y = []
+    for i in range(len(all_t)):
+      x, t, y = all_x[i], all_t[i], all_y[i]
+      clean_x = []
+      clean_t = []
+      clean_y = []
+      for j in range(t.shape[0]):
+        if t[j] != 0:
+          clean_x.append(x[j])
+          clean_t.append(t[j])
+          clean_y.append(y[j])
+      clean_all_x.append(np.array(clean_x))
+      clean_all_t.append(np.array(clean_t))
+      clean_all_y.append(np.array(clean_y))
+
+    return clean_all_x, clean_all_t, clean_all_y
 
   def cut_in_sequences(self, all_x, all_t, all_y, regular, seq_len, inc=1):
 
@@ -154,8 +172,8 @@ class PersonData:
       for s in range(0, x_.shape[0] - seq_len, inc):
         start = s
         end = start + seq_len
-        sequences_t.append(t_[start:end])
         sequences_x.append(x_[start:end])
+        sequences_t.append(t_[start:end])
         sequences_y.append(y_[start:end])
 
 
