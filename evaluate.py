@@ -62,10 +62,11 @@ for i in tqdm(range(0, loader.test_x.shape[0], args.batch_size)):
   all_preds.append(pred)
 
 all_preds = np.concatenate(all_preds, axis=0)
-print(all_preds.shape)
-print(np.argmax(all_preds, -1).shape)
-print(all_preds[0])
-print(np.argmax(all_preds, -1)[0])
+# print(loader.test_y.shape)
+# print(np.argmax(all_preds, -1).shape)
+print(loader.test_y[3])
+print(np.argmax(all_preds, -1)[3])
+print(loader.test_y[3] == np.argmax(all_preds, -1)[3])
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 total_loss = loss_fn(loader.test_y, all_preds)
 total_accuracy = np.mean(loader.test_y == np.argmax(all_preds, -1))
@@ -76,4 +77,4 @@ print(f"total_loss: {total_loss} \t total_accuracy: {total_accuracy}")
 # ready to visualize: (ground truth = loader.test_y) and predicted (logits) = all_preds
 # import pdb; pdb.set_trace()
 
-###HOW TO RUN THIS FILE: python3 evaluate.py --path logs/LSTM_nonadversarial_nonadversarial_regular/model.ckpt###
+###HOW TO RUN THIS FILE: python evaluate.py --path logs/LSTM_nonadversarial_nonadversarial_regular/model.ckpt###

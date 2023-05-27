@@ -22,6 +22,7 @@ def build_model(model_type, training_mode, testing_mode, batch_size, seq_length,
         model = tf.keras.Sequential([
           tf.keras.layers.InputLayer(input_shape=(seq_length, num_x_features)),
           LTC(wiring, return_sequences=True),
+          tf.keras.layers.Dense(num_outputs)
         ])
     else:
         input_x = tf.keras.Input(shape=(seq_length, num_x_features))
