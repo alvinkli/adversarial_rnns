@@ -68,7 +68,7 @@ for iter in pbar:
     test_losses.append(test_loss)
 
   # Print the progress
-  pbar.set_description(f"Loss {train_loss:.2f}   VLoss {test_loss:.2f}")
+  pbar.set_description(f"Train Loss {train_loss:.2f}   Validation Loss {test_loss:.2f}")
 
   # Save the progress
   if iter % 1000 == 0:
