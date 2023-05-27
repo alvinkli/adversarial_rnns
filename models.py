@@ -13,7 +13,7 @@ def build_model(model_type, training_mode, testing_mode, batch_size, seq_length,
         recurrent_activation='sigmoid',
         stateful=False,
       ),
-      tf.keras.layers.Dense(num_outputs)
+      tf.keras.layers.Dense(num_outputs, activation = 'softmax')
     ])
   elif model_type == "LTC":
     motor_neurons = num_outputs
@@ -22,14 +22,14 @@ def build_model(model_type, training_mode, testing_mode, batch_size, seq_length,
         model = tf.keras.Sequential([
           tf.keras.layers.InputLayer(input_shape=(seq_length, num_x_features)),
           LTC(wiring, return_sequences=True),
-          tf.keras.layers.Dense(num_outputs)
+          tf.keras.layers.Dense(num_outputs, activation = 'softmax')
         ])
     else:
         input_x = tf.keras.Input(shape=(seq_length, num_x_features))
         input_t = tf.keras.Input(shape=(seq_length, 1))
         ltc_layer = LTC(wiring, return_sequences=True)
         x = ltc_layer((input_x, input_t))
-        y = tf.keras.layers.Dense(num_outputs)(x)
+        y = tf.keras.layers.Dense(num_outputs, activation = 'softmax')(x)
         model = tf.keras.Model(inputs=(input_x, input_t), outputs=y)
   return AdaptableRNNModel(model, model_type, training_mode, testing_mode, adv_eps)
 
@@ -41,7 +41,7 @@ class AdaptableRNNModel(tf.keras.Model):
     self.training_mode = training_mode
     self.testing_mode = testing_mode
     self.adversarial_eps = adversarial_eps
-    self.loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    self.loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False)
     if self.adversarial_eps > 0:
         attack_iters = int(max(min(self.adversarial_eps, 4), 1))
         self.fgsm = IFGSM(self.adversarial_eps, attack_iters)
