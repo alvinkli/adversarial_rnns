@@ -21,8 +21,8 @@ do
       do
 
        echo $model $train_mode $test_mode $sampling
-       savedir ="logs/${model}_${train_mode}_${test_mode}_${sampling}"
-       checkpoint_path = "logs/${model}_${train_mode}_${test_mode}_${sampling}/model.ckpt"
+       savedir="logs/${model}_${train_mode}_${test_mode}_${sampling}"
+       checkpoint_path="logs/${model}_${train_mode}_${test_mode}_${sampling}/model.ckpt"
        CUDA_VISIBLE_DEVICES=$GPU python evaluate.py --path $checkpoint_path > ${savedir}/testlog 2>&1 &
 
        # Increment GPU so we parallelize experiments on different gpus
