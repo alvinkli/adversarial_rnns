@@ -58,7 +58,7 @@ class AdaptableRNNModel(tf.keras.Model):
   def adv_call(self, input, y):
     attack_iters = int(max(min(self.adversarial_eps, 4), 1))
     fgsm = IFGSM(self.adversarial_eps, attack_iters)
-    x = fgsm(self.model, self.compute_loss, x, y)
+    x = fgsm(self.model, self.compute_loss, input, y)
     return self.model(x)
 
   def compute_loss(self, y, pred):
