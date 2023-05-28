@@ -135,7 +135,7 @@ def plot_confusion_matrix(preds, labels, num_classes):
 
 plot_confusion_matrix(arg_max_preds, loader.test_y, loader.num_classes)
 
-def plot_class_accuracy_matrix(preds, labels, num_classes):
+def plot_class_accuracy_bar(preds, labels, num_classes):
   pred_correctness = (loader.test_y == arg_max_preds)
   class_pred_correctness = []
   for c in range(num_classes):
@@ -156,7 +156,7 @@ def plot_class_accuracy_matrix(preds, labels, num_classes):
   plt.savefig(os.path.join(args.logdir, descriptor, "class_accuracies.png"))
   plt.close()
 
-plot_class_accuracy_matrix(arg_max_preds, loader.test_y, loader.num_classes)
+plot_class_accuracy_bar(arg_max_preds, loader.test_y, loader.num_classes)
 
 # print(np.mean([[True,False], [True, True], [False, False]], axis = 1))
 
