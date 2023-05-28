@@ -1,5 +1,15 @@
-2023-05-28 08:35:06.236494: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2023-05-28 08:35:40.802985: E tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-05-28 14:27:24.050759: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:24.059714: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:24.066512: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:25.393112: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-05-28 14:27:25.398465: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:25.419293: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:25.426375: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:26.710188: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:26.711909: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:26.713980: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 14:27:26.715578: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 21311 MB memory:  -> device: 0, name: NVIDIA RTX A5000, pci bus id: 0000:41:00.0, compute capability: 8.6
 all_x.shape:  (4836, 32, 7)
 all_t.shape:  (4836, 32, 1)
 all_y.shape:  (4836, 32)
@@ -9,5 +19,7 @@ train_t.shape:  (3869, 32, 1)
 train_y.shape:  (3869, 32)
 Total number of train sequences: 3869
 Total number of test  sequences: 967
-  0%|          | 0/31 [00:00<?, ?it/s]  3%|▎         | 1/31 [00:01<00:36,  1.21s/it]  6%|▋         | 2/31 [00:02<00:28,  1.03it/s] 10%|▉         | 3/31 [00:02<00:23,  1.21it/s] 13%|█▎        | 4/31 [00:03<00:22,  1.21it/s] 16%|█▌        | 5/31 [00:04<00:21,  1.20it/s] 19%|█▉        | 6/31 [00:05<00:20,  1.20it/s] 23%|██▎       | 7/31 [00:06<00:24,  1.03s/it] 26%|██▌       | 8/31 [00:08<00:26,  1.15s/it] 29%|██▉       | 9/31 [00:09<00:27,  1.25s/it] 32%|███▏      | 10/31 [00:10<00:26,  1.26s/it] 35%|███▌      | 11/31 [00:11<00:24,  1.25s/it] 39%|███▊      | 12/31 [00:13<00:22,  1.19s/it] 42%|████▏     | 13/31 [00:14<00:20,  1.14s/it] 45%|████▌     | 14/31 [00:15<00:18,  1.11s/it] 48%|████▊     | 15/31 [00:16<00:17,  1.08s/it] 52%|█████▏    | 16/31 [00:17<00:16,  1.07s/it] 55%|█████▍    | 17/31 [00:18<00:15,  1.07s/it] 58%|█████▊    | 18/31 [00:19<00:14,  1.13s/it] 61%|██████▏   | 19/31 [00:20<00:14,  1.19s/it] 65%|██████▍   | 20/31 [00:22<00:14,  1.35s/it] 68%|██████▊   | 21/31 [00:24<00:14,  1.47s/it] 71%|███████   | 22/31 [00:25<00:11,  1.27s/it] 74%|███████▍  | 23/31 [00:26<00:10,  1.28s/it] 77%|███████▋  | 24/31 [00:27<00:08,  1.21s/it] 81%|████████  | 25/31 [00:28<00:06,  1.15s/it] 84%|████████▍ | 26/31 [00:29<00:05,  1.05s/it] 87%|████████▋ | 27/31 [00:30<00:04,  1.04s/it] 90%|█████████ | 28/31 [00:31<00:03,  1.09s/it] 94%|█████████▎| 29/31 [00:32<00:02,  1.05s/it] 97%|█████████▋| 30/31 [00:33<00:00,  1.06it/s]100%|██████████| 31/31 [00:34<00:00,  1.05it/s]100%|██████████| 31/31 [00:34<00:00,  1.10s/it]
-total_loss: 1.5974501371383667 	 total_accuracy: 0.7046923474663909
+  0%|          | 0/31 [00:00<?, ?it/s]2023-05-28 14:27:27.284269: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2023-05-28 14:27:27.930692: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+  3%|▎         | 1/31 [00:01<00:32,  1.08s/it] 97%|█████████▋| 30/31 [00:01<00:00, 34.62it/s]100%|██████████| 31/31 [00:01<00:00, 26.16it/s]
+total_loss: 1.597454309463501 	 total_accuracy: 0.7048216132368149
