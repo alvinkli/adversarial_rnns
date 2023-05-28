@@ -74,6 +74,9 @@ arg_max_preds = np.argmax(all_preds, -1)
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 total_loss = loss_fn(loader.test_y, all_preds)
 total_accuracy = np.mean(loader.test_y == arg_max_preds)
+save_accuracy_path = os.path.join(args.logdir, "accuracies", descriptor)
+with open(f"{save_accuracy_path}", "w") as file:
+  file.write(str(total_accuracy))
 print(f"total_loss: {total_loss} \t total_accuracy: {total_accuracy}")
 
 ### Plot any additional plots here -- all variables should be computed and
@@ -132,9 +135,6 @@ def plot_confusion_matrix(preds, labels, num_classes):
 
 plot_confusion_matrix(arg_max_preds, loader.test_y, loader.num_classes)
 
-# print("HFIHSOIDHFIHOSHFIHSDOS", (loader.test_y == arg_max_preds).shape)
-# print("\n\nHFIHSOIDHFIHOSHFIHSDOS", (loader.test_y == arg_max_preds)[0])
-
 def plot_class_accuracy_matrix(preds, labels, num_classes):
   pred_correctness = (loader.test_y == arg_max_preds)
   class_pred_correctness = []
@@ -143,11 +143,9 @@ def plot_class_accuracy_matrix(preds, labels, num_classes):
   for i in range(preds.shape[0]):
     for j in range(preds.shape[1]):
       class_pred_correctness[int(labels[i][j])].append(pred_correctness[i][j])
-  print(np.array(class_pred_correctness, dtype=object).shape)
   class_accuracies = []
   for i in range(num_classes):
     class_accuracies.append(np.mean(class_pred_correctness[i]))
-  print(class_accuracies)
 
   x = np.arange(len(class_accuracies))
   plt.bar(x, class_accuracies)
@@ -157,6 +155,7 @@ def plot_class_accuracy_matrix(preds, labels, num_classes):
   plt.savefig(os.path.join(args.logdir, descriptor, "class_accuracies.pdf"))
   plt.savefig(os.path.join(args.logdir, descriptor, "class_accuracies.png"))
   plt.close()
+
 plot_class_accuracy_matrix(arg_max_preds, loader.test_y, loader.num_classes)
 
 # print(np.mean([[True,False], [True, True], [False, False]], axis = 1))
