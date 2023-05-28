@@ -121,9 +121,9 @@ class IFGSM:
   @tf.function
   def __call__(self, model, loss, input, y):
     if type(input) == tuple:
-        x, t = input
+      x, t = input
     else:
-        x, t = (input, None)
+      x, t = (input, None)
 
     for i in range(self.iterations):
       with tf.GradientTape() as tape:
