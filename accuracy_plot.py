@@ -48,7 +48,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
+    name = f"Standard {model_type}\n"
     if(model_type == "LSTM" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -59,7 +59,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
+    name = f"Standard {model_type}"
     if(model_type == "LSTM" and train_mode == "nonadversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -71,7 +71,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
+    name = f"Adversarial {model_type}\n"
     if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -82,7 +82,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
+    name = f"Adversarial {model_type}"
     if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -94,7 +94,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
+    name = f"Standard {model_type}\n"
     if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -105,7 +105,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
+    name = f"Standard {model_type}"
     if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -117,7 +117,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
+    name = f"Adversarial {model_type}\n"
     if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -128,7 +128,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
+    name = f"Adversarial {model_type}"
     if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
