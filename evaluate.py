@@ -53,12 +53,12 @@ for i in tqdm(range(0, loader.test_x.shape[0], args.batch_size)):
   ### TODO: if test == "adversarial" then we should do an adversarial step here.
   if regular or model_type == "LSTM":
     if test_mode == "adversarial":
-      pred = model.adv_call(x)
+      pred = model.adv_call(x, y)
     else:
       pred = model(x)
   else:
     if test_mode == "adversarial":
-      pred = model.adv_call((x, t))
+      pred = model.adv_call((x, t), y)
     else:
       pred = model((x, t))
   all_preds.append(pred)
@@ -74,8 +74,11 @@ arg_max_preds = np.argmax(all_preds, -1)
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 total_loss = loss_fn(loader.test_y, all_preds)
 total_accuracy = np.mean(loader.test_y == arg_max_preds)
-save_accuracy_path = os.path.join(args.logdir, "accuracies", descriptor)
-with open(f"{save_accuracy_path}", "w") as file:
+accuracies_folder_path = os.path.join(args.logdir, "accuracies")
+if not os.path.exists(accuracies_folder_path):
+  os.makedirs(accuracies_folder_path)
+save_accuracy_path = os.path.join(accuracies_folder_path, descriptor)
+with open(save_accuracy_path, "w") as file:
   file.write(str(total_accuracy))
 print(f"total_loss: {total_loss} \t total_accuracy: {total_accuracy}")
 
