@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import seaborn as sns
 import argparse
 import os
@@ -47,6 +48,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
     if(model_type == "LSTM" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -57,6 +59,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
     if(model_type == "LSTM" and train_mode == "nonadversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -68,6 +71,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
     if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -78,6 +82,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
     if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -89,6 +94,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
     if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -99,6 +105,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
     if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -110,6 +117,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n\n"
     if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -120,6 +128,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Model Type: {model_type}\nTrain Mode: {train_mode}\n\n"
     if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -129,13 +138,18 @@ def sort_models(model_names, model_accuracies):
 regular_models_sorted, regular_model_accuracies_sorted = sort_models(regular_models, regular_model_accuracies)
 irregular_models_sorted, irregular_model_accuracies_sorted = sort_models(irregular_models, irregular_model_accuracies)
 # print(len(regular_models), len(irregular_model_accuracies))
+# print(regular_models_sorted, regular_model_accuracies_sorted)
 
 sns.set_style("whitegrid")
 def plot_all_models_accuracy_bar(models, model_accuracies, regular):
-  x = np.arange(len(models))
   colors = ['steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral']
   plt.figure(figsize=(20, 15))
-  plt.bar(models, model_accuracies, 1.0, color=colors)
+  plt.bar(models, model_accuracies, 0.75, color=colors)
+  # Create a custom legend
+  legend_labels = ['Non-Adversarial Testing', 'Adversarial Testing']
+  legend_colors = ['steelblue', 'lightcoral']
+  legend_handles = [mpatches.Patch(color=color) for color in legend_colors]
+  plt.legend(legend_handles, legend_labels, facecolor='white', loc='upper right')
   plt.xlabel('Model', fontsize = 20, labelpad = 15)
   plt.ylabel('Accuracy', fontsize = 20, labelpad = 15)
   if regular:
