@@ -48,7 +48,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Standard {model_type}\n"
+    name = f"Standard\n{model_type}\n"
     if(model_type == "LSTM" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -59,7 +59,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Standard {model_type}"
+    name = f"Standard\n{model_type}"
     if(model_type == "LSTM" and train_mode == "nonadversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -71,7 +71,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Adversarial {model_type}\n"
+    name = f"Adversarial\n{model_type}\n"
     if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -82,7 +82,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Adversarial {model_type}"
+    name = f"Adversarial\n{model_type}"
     if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -94,7 +94,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Standard {model_type}\n"
+    name = f"Standard\n{model_type}\n"
     if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -105,7 +105,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Standard {model_type}"
+    name = f"Standard\n{model_type}"
     if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -117,7 +117,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Adversarial {model_type}\n"
+    name = f"Adversarial\n{model_type}\n"
     if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -128,7 +128,7 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Adversarial {model_type}"
+    name = f"Adversarial\n{model_type}"
     if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
@@ -143,21 +143,21 @@ irregular_models_sorted, irregular_model_accuracies_sorted = sort_models(irregul
 sns.set_style("whitegrid")
 def plot_all_models_accuracy_bar(models, model_accuracies, regular):
   colors = ['steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral']
-  plt.figure(figsize=(20, 15))
+  plt.figure(figsize=(13, 10))
   plt.bar(models, model_accuracies, 0.75, color=colors)
   # Create a custom legend
   legend_labels = ['Non-Adversarial Testing', 'Adversarial Testing']
   legend_colors = ['steelblue', 'lightcoral']
   legend_handles = [mpatches.Patch(color=color) for color in legend_colors]
   plt.legend(legend_handles, legend_labels, facecolor='white', loc='upper right')
-  plt.xlabel('Model', fontsize = 24, labelpad = 0)
-  plt.ylabel('Accuracy', fontsize = 24, labelpad = 30)
+  plt.xlabel('Model', fontsize = 16, labelpad = 0)
+  plt.ylabel('Accuracy', fontsize = 16, labelpad = 30)
   if regular:
-    plt.title("Regularly Sampled Model Prediction Accuracies", fontsize = 32, pad = 30.0)
+    plt.title("Regularly Sampled Model Prediction Accuracies", fontsize = 24, pad = 26.0)
   else:
-    plt.title("Irregularly Sampled Model Prediction Accuracies", fontsize = 32, pad = 30.0)
-  plt.yticks(fontsize=16)
-  plt.xticks(fontsize=16)
+    plt.title("Irregularly Sampled Model Prediction Accuracies", fontsize = 24, pad = 26.0)
+  plt.yticks(fontsize=12)
+  plt.xticks(fontsize=12)
   plt.tight_layout()
   if regular:
     plt.savefig(os.path.join("logs", "regular_model_accuracies.pdf"))

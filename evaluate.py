@@ -86,7 +86,7 @@ print(f"total_loss: {total_loss} \t total_accuracy: {total_accuracy}")
 # ready to visualize: (ground truth = loader.test_y) and predicted (logits) = all_preds
 sns.set_style("whitegrid")
 
-def plot_confusion_matrix(preds, labels, num_classes):
+def generate_confusion_matrix(preds, labels, num_classes):
   all_preds= []
   all_labels = []
   for i in range(preds.shape[0]):
@@ -94,12 +94,16 @@ def plot_confusion_matrix(preds, labels, num_classes):
       all_preds.append(preds[i][j])
       all_labels.append(labels[i][j])
   confusion_matrix = np.array(tf.math.confusion_matrix(all_labels, all_preds, num_classes))
+  return confusion_matrix
 
+def plot_confusion_matrix(preds, labels, num_classes):
+  confusion_matrix = generate_confusion_matrix(preds, labels, num_classes)
   class_labels = ['State 0', 'State 1', 'State 2', 'State 3', 'State 4', 'State 5', 'State 6']
-
+  model_type, train_mode, test_mode, sample = descriptor.split("_")
+  
   # Plot the confusion matrix as a table
   fig, ax = plt.subplots(figsize=(8, 8))
-  ax.set_title(f"{descriptor} Matrix", x = 0.47, pad=0)
+  ax.set_title(f"{model_type}_{train_mode.capitalize()}_{test_mode.capitalize()}_{sample.capitalize()} Matrix", x = 0.47, pad=0)
   ax.set_xlabel('Predicted Labels', labelpad=0)
   ax.set_ylabel('True Labels', labelpad=0)
   table = ax.table(cellText=confusion_matrix,
@@ -149,12 +153,12 @@ def plot_class_accuracy_bar(preds, labels, num_classes):
   class_accuracies = []
   for i in range(num_classes):
     class_accuracies.append(np.mean(class_pred_correctness[i]))
-
   x = np.arange(len(class_accuracies))
+  model_type, train_mode, test_mode, sample = descriptor.split("_")
   plt.bar(x, class_accuracies)
   plt.xlabel('Class')
   plt.ylabel('Accuracy')
-  plt.title(f"{descriptor} Prediction Accuracies")
+  plt.title(f"{model_type}_{train_mode.capitalize()}_{test_mode.capitalize()}_{sample.capitalize()} Prediction Accuracies")
   plt.savefig(os.path.join(args.logdir, descriptor, "class_accuracies.pdf"))
   plt.savefig(os.path.join(args.logdir, descriptor, "class_accuracies.png"))
   plt.close()
