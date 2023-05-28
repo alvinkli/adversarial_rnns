@@ -156,6 +156,11 @@ class PersonData:
       else:
         # irregularly drop at random (keep 50%)
         drop_mask = np.random.uniform(size=t.shape) > 0.5
+        # exponential_mask = np.random.exponential(scale=3.0, size=t.shape[0])
+        # drop_mask = exponential_mask > 1.0
+
+      # int(np.random.exponential(scale=3, size=t.shape[0]))
+      # False, True, True, True, False
 
       t_ = [t[0]]
       for i in range(1, t.shape[0]):
