@@ -143,7 +143,7 @@ irregular_models_sorted, irregular_model_accuracies_sorted = sort_models(irregul
 sns.set_style("whitegrid")
 def plot_all_models_accuracy_bar(models, model_accuracies, regular):
   colors = ['steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral']
-  plt.figure(figsize=(30, 15))
+  plt.figure(figsize=(20, 15))
   plt.bar(models, model_accuracies, 0.75, color=colors)
   # Create a custom legend
   legend_labels = ['Non-Adversarial Testing', 'Adversarial Testing']
@@ -151,11 +151,11 @@ def plot_all_models_accuracy_bar(models, model_accuracies, regular):
   legend_handles = [mpatches.Patch(color=color) for color in legend_colors]
   plt.legend(legend_handles, legend_labels, facecolor='white', loc='upper right')
   plt.xlabel('Model', fontsize = 24, labelpad = 0)
-  plt.ylabel('Accuracy', fontsize = 24, labelpad = 40)
+  plt.ylabel('Accuracy', fontsize = 24, labelpad = 30)
   if regular:
-    plt.title("Regularly Sampled Model Prediction Accuracies", fontsize = 36, pad = 36.0)
+    plt.title("Regularly Sampled Model Prediction Accuracies", fontsize = 32, pad = 30.0)
   else:
-    plt.title("Irregularly Sampled Model Prediction Accuracies", fontsize = 36, pad = 36.0)
+    plt.title("Irregularly Sampled Model Prediction Accuracies", fontsize = 32, pad = 30.0)
   plt.yticks(fontsize=16)
   plt.xticks(fontsize=16)
   plt.tight_layout()
