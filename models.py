@@ -52,14 +52,18 @@ class AdaptableRNNModel(tf.keras.Model):
   def get_testing_mode(self):
     return self.testing_mode
 
-  def call(self, x):
-    return self.model(x)
+  def call(self, input):
+    return self.model(input)
 
   def adv_call(self, input, y):
     attack_iters = int(max(min(self.adversarial_eps, 4), 1))
     fgsm = IFGSM(self.adversarial_eps, attack_iters)
     x = fgsm(self.model, self.compute_loss, input, y)
-    return self.model(x)
+    t = input[-1]
+    if type(input) == tuple:
+      return self.call((x, t))
+    else:
+      return self.call(x)
 
   def compute_loss(self, y, pred):
     return self.loss_fn(y, pred)
