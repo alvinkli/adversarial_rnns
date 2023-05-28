@@ -1,0 +1,11 @@
+2023-05-28 08:35:06.048631: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+all_x.shape:  (4836, 32, 7)
+all_t.shape:  (4836, 32, 1)
+all_y.shape:  (4836, 32)
+Total number of sequences: 4836
+train_x.shape:  (3869, 32, 7)
+train_t.shape:  (3869, 32, 1)
+train_y.shape:  (3869, 32)
+Total number of train sequences: 3869
+Total number of test  sequences: 967
+  0%|          | 0/31 [00:00<?, ?it/s]  3%|▎         | 1/31 [00:40<20:08, 40.29s/it]
