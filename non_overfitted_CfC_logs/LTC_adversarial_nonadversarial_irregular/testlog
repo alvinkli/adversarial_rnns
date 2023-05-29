@@ -1,24 +1,0 @@
-2023-05-28 20:11:23.723876: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:23.731304: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:23.734899: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:25.555694: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2023-05-28 20:11:25.560945: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:25.574673: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:25.584581: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:26.518712: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:26.520141: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:26.521604: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2023-05-28 20:11:26.522984: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 21363 MB memory:  -> device: 0, name: NVIDIA RTX A5000, pci bus id: 0000:61:00.0, compute capability: 8.6
-all_x.shape:  (847, 32, 7)
-all_t.shape:  (847, 32, 1)
-all_y.shape:  (847, 32)
-Total number of sequences: 847
-train_x.shape:  (678, 32, 7)
-train_t.shape:  (678, 32, 1)
-train_y.shape:  (678, 32)
-Total number of train sequences: 678
-Total number of test  sequences: 169
-  0%|          | 0/6 [00:00<?, ?it/s]2023-05-28 20:11:27.526122: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
- 17%|█▋        | 1/6 [00:00<00:03,  1.45it/s] 33%|███▎      | 2/6 [00:00<00:01,  2.74it/s] 50%|█████     | 3/6 [00:00<00:00,  3.84it/s] 67%|██████▋   | 4/6 [00:01<00:00,  4.72it/s] 83%|████████▎ | 5/6 [00:01<00:00,  5.42it/s]100%|██████████| 6/6 [00:01<00:00,  5.95it/s]100%|██████████| 6/6 [00:01<00:00,  4.37it/s]
-total_loss: 1.6023502349853516 	 total_accuracy: 0.6490384615384616
