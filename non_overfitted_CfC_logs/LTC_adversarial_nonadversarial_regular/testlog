@@ -1,0 +1,24 @@
+2023-05-28 20:11:23.843999: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:23.852185: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:23.853282: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:25.194670: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-05-28 20:11:25.200826: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:25.225883: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:25.236530: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:26.381480: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:26.383924: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:26.386282: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-28 20:11:26.389510: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 21279 MB memory:  -> device: 0, name: NVIDIA RTX A5000, pci bus id: 0000:41:00.0, compute capability: 8.6
+all_x.shape:  (4836, 32, 7)
+all_t.shape:  (4836, 32, 1)
+all_y.shape:  (4836, 32)
+Total number of sequences: 4836
+train_x.shape:  (3869, 32, 7)
+train_t.shape:  (3869, 32, 1)
+train_y.shape:  (3869, 32)
+Total number of train sequences: 3869
+Total number of test  sequences: 967
+  0%|          | 0/31 [00:00<?, ?it/s]2023-05-28 20:11:27.481986: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+  3%|▎         | 1/31 [00:00<00:20,  1.44it/s]  6%|▋         | 2/31 [00:00<00:10,  2.73it/s] 10%|▉         | 3/31 [00:00<00:07,  3.84it/s] 13%|█▎        | 4/31 [00:01<00:05,  4.74it/s] 16%|█▌        | 5/31 [00:01<00:04,  5.40it/s] 19%|█▉        | 6/31 [00:01<00:04,  5.96it/s] 23%|██▎       | 7/31 [00:01<00:03,  6.38it/s] 26%|██▌       | 8/31 [00:01<00:03,  6.61it/s] 29%|██▉       | 9/31 [00:01<00:03,  6.86it/s] 32%|███▏      | 10/31 [00:01<00:02,  7.06it/s] 35%|███▌      | 11/31 [00:02<00:02,  7.21it/s] 39%|███▊      | 12/31 [00:02<00:02,  7.32it/s] 42%|████▏     | 13/31 [00:02<00:02,  7.41it/s] 45%|████▌     | 14/31 [00:02<00:02,  7.46it/s] 48%|████▊     | 15/31 [00:02<00:02,  7.48it/s] 52%|█████▏    | 16/31 [00:02<00:02,  7.47it/s] 55%|█████▍    | 17/31 [00:02<00:01,  7.50it/s] 58%|█████▊    | 18/31 [00:02<00:01,  7.53it/s] 61%|██████▏   | 19/31 [00:03<00:01,  7.56it/s] 65%|██████▍   | 20/31 [00:03<00:01,  7.57it/s] 68%|██████▊   | 21/31 [00:03<00:01,  7.57it/s] 71%|███████   | 22/31 [00:03<00:01,  7.58it/s] 74%|███████▍  | 23/31 [00:03<00:01,  7.59it/s] 77%|███████▋  | 24/31 [00:03<00:00,  7.60it/s] 81%|████████  | 25/31 [00:03<00:00,  7.61it/s] 84%|████████▍ | 26/31 [00:04<00:00,  7.62it/s] 87%|████████▋ | 27/31 [00:04<00:00,  7.62it/s] 90%|█████████ | 28/31 [00:04<00:00,  7.62it/s] 94%|█████████▎| 29/31 [00:04<00:00,  7.63it/s] 97%|█████████▋| 30/31 [00:04<00:00,  7.57it/s]100%|██████████| 31/31 [00:04<00:00,  7.59it/s]100%|██████████| 31/31 [00:04<00:00,  6.62it/s]
+total_loss: 1.6050485372543335 	 total_accuracy: 0.6740240434332989

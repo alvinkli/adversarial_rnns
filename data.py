@@ -155,13 +155,20 @@ class PersonData:
         drop_mask = np.arange(t.shape[0]) % 2 == 0
       else:
         # irregularly drop at random (keep 50%)
-        drop_mask = np.random.uniform(size=t.shape) > 0.5
+        # drop_mask = np.random.uniform(size=t.shape) > 0.5
         # exponential_mask = np.random.exponential(scale=3.0, size=t.shape[0])
         # drop_mask = exponential_mask > 1.0
-
-      # int(np.random.exponential(scale=3, size=t.shape[0]))
-      # False, True, True, True, False
-
+        lambd = 10
+        exponential_drop_intervals = np.array([0])
+        while int(np.sum(exponential_drop_intervals)) != (t.shape[0] - 1):
+          exponential_drop_intervals = np.random.exponential(scale=lambd, size=int(t.shape[0]/lambd)).astype(int)
+        drop_mask = [True for i in range(t.shape[0])]
+        no_drop_pointer = 0
+        for interval in exponential_drop_intervals:
+          no_drop_pointer += interval
+          drop_mask[no_drop_pointer] = False
+        drop_mask = np.array(drop_mask)
+        
       t_ = [t[0]]
       for i in range(1, t.shape[0]):
         if drop_mask[i-1]: # accumulate the old dropped time to the new time

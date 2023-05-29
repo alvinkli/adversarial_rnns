@@ -1,6 +1,6 @@
 import tensorflow as tf
 from ncps import wirings
-from ncps.tf import CfC, LTC
+from ncps.tf import LTC
 
 def build_model(model_type, training_mode, testing_mode, batch_size, seq_length, num_x_features, regular, num_nodes=256, num_outputs=7, adv_eps=0.1):
   if model_type == "LSTM":
