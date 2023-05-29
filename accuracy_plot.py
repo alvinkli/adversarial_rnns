@@ -59,8 +59,31 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
+    name = f"Standard\n{model_type}\n"
+    if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
+      new_model_names.append(name)
+      new_model_accuracies.append(model_accuracies[i])
+
+  for i in range(len(model_names)):
+    name = model_names[i]
+    model_type, train_mode, test_mode, sample = name.split("\n")
+    model_type = model_type[12:]
+    train_mode = train_mode[12:]
+    test_mode = test_mode[11:]
+    sample = sample[18:]
     name = f"Standard\n{model_type}"
     if(model_type == "LSTM" and train_mode == "nonadversarial" and test_mode == "adversarial"):
+      new_model_names.append(name)
+      new_model_accuracies.append(model_accuracies[i])
+  for i in range(len(model_names)):
+    name = model_names[i]
+    model_type, train_mode, test_mode, sample = name.split("\n")
+    model_type = model_type[12:]
+    train_mode = train_mode[12:]
+    test_mode = test_mode[11:]
+    sample = sample[18:]
+    name = f"Standard\n{model_type}"
+    if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
 
@@ -82,31 +105,8 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Adversarial\n{model_type}"
-    if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "adversarial"):
-      new_model_names.append(name)
-      new_model_accuracies.append(model_accuracies[i])
-
-  for i in range(len(model_names)):
-    name = model_names[i]
-    model_type, train_mode, test_mode, sample = name.split("\n")
-    model_type = model_type[12:]
-    train_mode = train_mode[12:]
-    test_mode = test_mode[11:]
-    sample = sample[18:]
-    name = f"Standard\n{model_type}\n"
-    if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "nonadversarial"):
-      new_model_names.append(name)
-      new_model_accuracies.append(model_accuracies[i])
-  for i in range(len(model_names)):
-    name = model_names[i]
-    model_type, train_mode, test_mode, sample = name.split("\n")
-    model_type = model_type[12:]
-    train_mode = train_mode[12:]
-    test_mode = test_mode[11:]
-    sample = sample[18:]
-    name = f"Standard\n{model_type}"
-    if(model_type == "LTC" and train_mode == "nonadversarial" and test_mode == "adversarial"):
+    name = f"Adversarial\n{model_type}\n"
+    if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "nonadversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
     
@@ -117,8 +117,8 @@ def sort_models(model_names, model_accuracies):
     train_mode = train_mode[12:]
     test_mode = test_mode[11:]
     sample = sample[18:]
-    name = f"Adversarial\n{model_type}\n"
-    if(model_type == "LTC" and train_mode == "adversarial" and test_mode == "nonadversarial"):
+    name = f"Adversarial\n{model_type}"
+    if(model_type == "LSTM" and train_mode == "adversarial" and test_mode == "adversarial"):
       new_model_names.append(name)
       new_model_accuracies.append(model_accuracies[i])
   for i in range(len(model_names)):
@@ -142,7 +142,7 @@ irregular_models_sorted, irregular_model_accuracies_sorted = sort_models(irregul
 
 sns.set_style("whitegrid")
 def plot_all_models_accuracy_bar(models, model_accuracies, regular):
-  colors = ['steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral', 'steelblue', 'lightcoral']
+  colors = ['steelblue', 'steelblue', 'lightcoral', 'lightcoral', 'steelblue', 'steelblue', 'lightcoral', 'lightcoral']
   plt.figure(figsize=(10, 8))
   plt.bar(models, model_accuracies, 0.75, color=colors)
   # Create a custom legend

@@ -77,8 +77,12 @@ for iter in pbar:
 model.save_weights(os.path.join(args.logdir, dirname, "model.ckpt"))
 
 # Make some preliminary (loss) plots, save them in the same directory as the model
-plt.plot(np.linspace(0, args.num_iters, len(train_losses)), train_losses)
-plt.plot(np.linspace(0, args.num_iters, len(test_losses)), test_losses)
+plt.plot(np.linspace(0, args.num_iters, len(train_losses)), train_losses, label='Training Loss')
+plt.plot(np.linspace(0, args.num_iters, len(test_losses)), test_losses, label='Testing Loss')
+plt.title(f"{args.model_type}_{args.train.capitalize()}_{args.test.capitalize()}_{args.sample.capitalize()} Loss Curve", pad = 12)
+plt.xlabel("Epochs", labelpad = 8)
+plt.ylabel("Loss", labelpad = 8)
+plt.legend(facecolor='white', loc='upper right')
 plt.savefig(os.path.join(args.logdir, dirname, "losses.pdf"))
 plt.savefig(os.path.join(args.logdir, dirname, "losses.png"))
 plt.close()
