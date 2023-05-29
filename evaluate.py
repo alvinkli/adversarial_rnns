@@ -103,7 +103,10 @@ def plot_confusion_matrix(preds, labels, num_classes):
   
   # Plot the confusion matrix as a table
   fig, ax = plt.subplots(figsize=(8, 8))
-  ax.set_title(f"{model_type}_{train_mode.capitalize()}_{test_mode.capitalize()}_{sample.capitalize()} Matrix", x = 0.47, pad=0)
+  if train_mode == "nonadversarial":
+    train_mode = "standard"
+  ax.set_title(f"{train_mode.capitalize()} {model_type} {test_mode.capitalize()} Test On {sample.capitalize()} Dataset", x = 0.48, fontsize = 12, pad=0)
+  # ax.set_title(f"{model_type}_{train_mode.capitalize()}_{test_mode.capitalize()}_{sample.capitalize()} Matrix", x = 0.47, pad=0)
   ax.set_xlabel('Predicted Labels', labelpad=0)
   ax.set_ylabel('True Labels', labelpad=0)
   table = ax.table(cellText=confusion_matrix,
@@ -156,10 +159,10 @@ def plot_class_accuracy_bar(preds, labels, num_classes):
   x = np.arange(len(class_accuracies))
   model_type, train_mode, test_mode, sample = descriptor.split("_")
   plt.bar(x, class_accuracies)
-  plt.yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0], fontsize=8)
+  plt.yticks([0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9], fontsize=8)
   plt.xticks(fontsize=8)
   plt.xlabel('Class', fontsize = 10, labelpad = 8)
-  plt.ylabel('Accuracy', fontsize = 10, labelpad = 12)
+  plt.ylabel('Accuracy', fontsize = 10, labelpad = 10)
   if train_mode == "nonadversarial":
     train_mode = "standard"
   plt.title(f"{train_mode.capitalize()} {model_type} {test_mode.capitalize()} Test On {sample.capitalize()} Dataset", fontsize = 12, pad = 12)

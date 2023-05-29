@@ -1,0 +1,28 @@
+2023-05-29 04:15:03.537126: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:03.545117: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:03.550115: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:05.644431: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-05-29 04:15:05.650122: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:05.661883: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:05.690796: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:06.272570: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:06.273565: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:06.274868: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-05-29 04:15:06.275779: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 21273 MB memory:  -> device: 0, name: NVIDIA RTX A5000, pci bus id: 0000:2e:00.0, compute capability: 8.6
+all_x.shape:  (849, 32, 7)
+all_t.shape:  (849, 32, 1)
+all_y.shape:  (849, 32)
+Total number of sequences: 849
+train_x.shape:  (680, 32, 7)
+train_t.shape:  (680, 32, 1)
+train_y.shape:  (680, 32)
+Total number of train sequences: 680
+Total number of test  sequences: 169
+  0%|          | 0/6 [00:00<?, ?it/s]2023-05-29 04:15:06.823987: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2023-05-29 04:15:07.410619: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2023-05-29 04:15:08.049857: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+ 17%|█▋        | 1/6 [00:01<00:08,  1.72s/it] 33%|███▎      | 2/6 [00:02<00:03,  1.11it/s] 50%|█████     | 3/6 [00:02<00:01,  1.58it/s] 67%|██████▋   | 4/6 [00:02<00:01,  1.93it/s]WARNING:tensorflow:5 out of the last 5 calls to <function IFGSM.__call__ at 0x7fec803c3670> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+ 83%|████████▎ | 5/6 [00:03<00:00,  2.25it/s]WARNING:tensorflow:6 out of the last 6 calls to <function IFGSM.__call__ at 0x7fec802b5430> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has experimental_relax_shapes=True option that relaxes argument shapes that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+100%|██████████| 6/6 [00:03<00:00,  2.48it/s]100%|██████████| 6/6 [00:03<00:00,  1.80it/s]
+total_loss: 1.7962267398834229 	 total_accuracy: 0.3609467455621302
