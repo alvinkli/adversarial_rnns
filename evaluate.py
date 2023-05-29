@@ -156,11 +156,13 @@ def plot_class_accuracy_bar(preds, labels, num_classes):
   x = np.arange(len(class_accuracies))
   model_type, train_mode, test_mode, sample = descriptor.split("_")
   plt.bar(x, class_accuracies)
-  plt.yticks(fontsize=8)
+  plt.yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0], fontsize=8)
   plt.xticks(fontsize=8)
   plt.xlabel('Class', fontsize = 10, labelpad = 8)
   plt.ylabel('Accuracy', fontsize = 10, labelpad = 12)
-  plt.title(f"{model_type}_{train_mode.capitalize()}_{test_mode.capitalize()}_{sample.capitalize()} Prediction Accuracies", fontsize = 12, pad = 12)
+  if train_mode == "nonadversarial":
+    train_mode = "standard"
+  plt.title(f"{train_mode.capitalize()} {model_type} {test_mode.capitalize()} Test On {sample.capitalize()} Dataset", fontsize = 12, pad = 12)
   plt.savefig(os.path.join(args.logdir, descriptor, "class_accuracies.pdf"))
   plt.savefig(os.path.join(args.logdir, descriptor, "class_accuracies.png"))
   plt.close()
