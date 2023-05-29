@@ -153,9 +153,9 @@ def plot_all_models_accuracy_bar(models, model_accuracies, regular):
   plt.xlabel('Model', fontsize = 16, labelpad = 0)
   plt.ylabel('Accuracy', fontsize = 16, labelpad = 14)
   if regular:
-    plt.title("Regularly Sampled Model Prediction Accuracies", fontsize = 20, pad = 16.0)
+    plt.title("Regularly Sampled Model Classification Accuracies", fontsize = 20, pad = 16.0)
   else:
-    plt.title("Irregularly Sampled Model Prediction Accuracies", fontsize = 20, pad = 16.0)
+    plt.title("Irregularly Sampled Model Classification Accuracies", fontsize = 20, pad = 16.0)
   plt.yticks(fontsize=12)
   plt.xticks(fontsize=12)
   plt.tight_layout()
