@@ -150,14 +150,14 @@ def plot_all_models_accuracy_bar(models, model_accuracies, regular):
   legend_colors = ['steelblue', 'lightcoral']
   legend_handles = [mpatches.Patch(color=color) for color in legend_colors]
   plt.legend(legend_handles, legend_labels, facecolor='white', loc='upper right')
-  plt.xlabel('Model', fontsize = 12, labelpad = 0)
-  plt.ylabel('Accuracy', fontsize = 12, labelpad = 16)
+  plt.xlabel('Model', fontsize = 16, labelpad = 0)
+  plt.ylabel('Accuracy', fontsize = 16, labelpad = 14)
   if regular:
-    plt.title("Regularly Sampled Model Prediction Accuracies", fontsize = 16, pad = 16.0)
+    plt.title("Regularly Sampled Model Prediction Accuracies", fontsize = 20, pad = 16.0)
   else:
-    plt.title("Irregularly Sampled Model Prediction Accuracies", fontsize = 16, pad = 16.0)
-  plt.yticks(fontsize=10)
-  plt.xticks(fontsize=10)
+    plt.title("Irregularly Sampled Model Prediction Accuracies", fontsize = 20, pad = 16.0)
+  plt.yticks(fontsize=12)
+  plt.xticks(fontsize=12)
   plt.tight_layout()
   if regular:
     plt.savefig(os.path.join("logs", "regular_model_accuracies.pdf"))

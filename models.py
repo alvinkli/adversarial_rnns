@@ -1,6 +1,6 @@
 import tensorflow as tf
 from ncps import wirings
-from ncps.tf import LTC
+from ncps.tf import CfC, LTC
 
 def build_model(model_type, training_mode, testing_mode, batch_size, seq_length, num_x_features, regular, num_nodes=256, num_outputs=7, adv_eps=0.1):
   if model_type == "LSTM":
@@ -43,8 +43,8 @@ class AdaptableRNNModel(tf.keras.Model):
     self.adversarial_eps = adversarial_eps
     self.loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False)
     if self.adversarial_eps > 0:
-        attack_iters = int(max(min(self.adversarial_eps, 4), 1))
-        self.fgsm = IFGSM(self.adversarial_eps, attack_iters)
+      attack_iters = int(max(min(self.adversarial_eps, 4), 1))
+      self.fgsm = IFGSM(self.adversarial_eps, attack_iters)
 
   def get_model_type(self):
     return self.model_type
